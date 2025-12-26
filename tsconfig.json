@@ -1,3 +1,4 @@
+/// This is the "Grammar Book" for TypeScript. It defines rules to make your code stricter and safer (e.g., not allowing adding a number to a text string).
 {
   "compilerOptions": {
     "target": "ES2017",

@@ -1,36 +1,32 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-  
-  /* Brand Colors */
-  --deep-blue: #0A2647;
-  --amber-orange: #FF9F1C;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  
-  --color-deep-blue: var(--deep-blue);
-  --color-amber-orange: var(--amber-orange);
-
-  --font-montserrat: var(--font-montserrat);
-  --font-roboto-slab: var(--font-roboto-slab);
-  --font-open-sans: var(--font-open-sans);
-  --font-inter: var(--font-inter);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+@layer utilities {
+  /* Ẩn thanh cuộn nhưng vẫn cho phép cuộn */
+  .hide-scrollbar::-webkit-scrollbar {
+    display: none;
   }
-}
+  .hide-scrollbar {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: var(--font-inter), sans-serif;
+  /* Masonry Grid (cho Creative Section) */
+  /* Lưu ý: Tailwind có class columns-2 columns-3 hỗ trợ tốt việc này, 
+     nhưng nếu muốn giữ class cũ thì thêm vào đây */
+  .masonry-grid {
+    column-count: 2;
+    column-gap: 1.5rem;
+  }
+  @media (min-width: 768px) {
+    .masonry-grid {
+      column-count: 3;
+    }
+  }
+  
+  /* Tránh bị ngắt dòng giữa chừng trong cột */
+  .break-inside-avoid {
+    break-inside: avoid;
+  }
 }

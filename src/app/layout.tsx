@@ -1,30 +1,14 @@
 import type { Metadata } from "next";
-import { Montserrat, Roboto_Slab, Open_Sans, Inter } from "next/font/google";
-import "./globals.css";
+import { fontBody, fontHeading } from "@/config/fonts";
+ // File font đã tạo ở bước trước
+import "@/app/globals.css";
+import Header from "@/components/layout/Header"
+import Footer from "@/components/layout/Footer"
 
-const montserrat = Montserrat({
-  variable: "--font-montserrat",
-  subsets: ["latin"],
-});
-
-const roboSlab = Roboto_Slab({
-  variable: "--font-roboto-slab",
-  subsets: ["latin"],
-});
-
-const openSans = Open_Sans({
-  variable: "--font-open-sans",
-  subsets: ["latin"],
-});
-
-const inter = Inter({
-  variable: "--font-inter",
-  subsets: ["latin"],
-});
 
 export const metadata: Metadata = {
-  title: "TrungTri.com - Nâng cấp Tư duy - Thỏa sức Sáng tạo",
-  description: "Nền tảng học tập lộ trình bài bản & Kho tàng ý tưởng DIY khổng lồ.",
+  title: "TrungTri.com - Nâng cấp Tư duy, Thỏa sức Sáng tạo",
+  description: "Lộ trình bài bản chinh phục ngoại ngữ & lập trình.",
 };
 
 export default function RootLayout({
@@ -33,11 +17,27 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="vi">
+    <html lang="vi" className="scroll-smooth">
+      <head>
+        {/* Google Icons */}
+        <link
+          rel="stylesheet"
+          href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,1,0"
+        />
+      </head>
       <body
-        className={`${montserrat.variable} ${roboSlab.variable} ${openSans.variable} ${inter.variable} antialiased`}
+        className={`${fontBody.variable} ${fontHeading.variable} font-sans bg-slate-50 text-slate-800 antialiased`}
       >
-        {children}
+        {/* 1. Header luôn nằm trên cùng */}
+        <Header />
+
+        {/* 2. Main content đẩy xuống 80px (pt-20) để không bị Header che mất */}
+        <main className="min-h-screen pt-20">
+            {children}
+        </main>
+
+        {/* 3. Footer luôn nằm dưới cùng */}
+        <Footer />
       </body>
     </html>
   );
