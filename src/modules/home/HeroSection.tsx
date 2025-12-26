@@ -6,77 +6,83 @@ export function HeroSection() {
         <section className="relative w-full h-screen overflow-hidden flex flex-col md:flex-row">
 
             {/* --- LEFT: EDUCATION (Academic Focus) --- */}
-            <div className="relative w-full md:w-1/2 h-[50vh] md:h-full group">
-                {/* Background Overlay & Gradient */}
-                <div className="absolute inset-0 bg-brand-navy-900/90 mix-blend-multiply z-10"></div>
-                <div className="absolute inset-0 bg-gradient-to-br from-brand-primary-900/80 to-brand-navy-900/95 z-20"></div>
+            <div className="relative w-full md:w-1/2 h-[50vh] md:h-full group overflow-hidden">
+                {/* Background Overlay & Gradient - Deep Blue Reference */}
+                {/* Significantly brighter: reduced opacity to 50% */}
+                <div className="absolute inset-0 bg-[#0f3460] mix-blend-multiply z-10 opacity-50"></div>
+                <div className="absolute inset-0 bg-gradient-to-br from-[#16213e] to-[#1a1a2e] opacity-40 z-20"></div>
 
-                {/* Image with Parallax/Zoom Effect */}
-                <Image
-                    src="/images/education-background.jpg"
-                    alt="Education"
-                    fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                    priority
-                />
+                {/* Image with Zoom Effect */}
+                <div className="absolute inset-0 w-full h-full overflow-hidden">
+                    <Image
+                        src="/images/education-background.jpg"
+                        alt="Education"
+                        fill
+                        className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-100"
+                        priority
+                    />
+                </div>
 
                 {/* Content */}
                 <div className="relative z-30 h-full flex flex-col justify-center items-center md:items-start p-8 md:pl-20 lg:pl-32 text-center md:text-left animate-fade-in-up">
-                    <span className="inline-block px-4 py-1.5 rounded-full border border-brand-primary-400/30 bg-brand-primary-900/30 text-brand-primary-100 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
-                        Academic & Logic
+                    <span className="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-blue-900/30 text-blue-50 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md shadow-sm">
+                        Academic Focus
                     </span>
-                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-white mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-white mb-6 leading-tight drop-shadow-lg">
                         Nâng Cấp <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary-400 to-cyan-300">
+                        <span className="text-blue-100">
                             Tư Duy
                         </span>
                     </h1>
-                    <p className="text-brand-navy-100 text-lg md:text-xl font-light mb-10 max-w-md leading-relaxed">
-                        Lộ trình bài bản chinh phục ngoại ngữ & lập trình. Học sâu, hiểu bản chất, áp dụng thực tế.
+                    <p className="text-blue-50 text-lg md:text-xl font-light mb-10 max-w-md leading-relaxed drop-shadow-md font-medium">
+                        Lộ trình bài bản chinh phục ngoại ngữ & lập trình. Học tập trung, kết quả thực.
                     </p>
                     <Link
                         href="#edu-hub"
-                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-brand-navy-900 rounded-2xl font-bold text-lg shadow-glow-blue hover:shadow-xl transition-all hover:-translate-y-1"
+                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-white text-[#1a1a2e] rounded-2xl font-bold text-lg shadow-lg hover:shadow-white/30 transition-all hover:-translate-y-1"
                     >
                         Bắt đầu Học
-                        <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">arrow_forward</span>
+                        <span className="material-symbols-outlined transition-transform group-hover:translate-x-1">school</span>
                     </Link>
                 </div>
             </div>
 
             {/* --- RIGHT: CREATIVE (Creative Flow) --- */}
-            <div className="relative w-full md:w-1/2 h-[50vh] md:h-full group border-t-4 md:border-t-0 md:border-l-4 border-white/10">
-                {/* Background Overlay */}
-                <div className="absolute inset-0 bg-brand-accent-900/80 mix-blend-multiply z-10"></div>
-                <div className="absolute inset-0 bg-gradient-to-bl from-orange-600/90 to-brand-accent-800/80 z-20"></div>
+            <div className="relative w-full md:w-1/2 h-[50vh] md:h-full group overflow-hidden border-t-4 md:border-t-0 md:border-l-4 border-white/10">
+                {/* Background Overlay - Amber/Orange Reference */}
+                {/* Significantly brighter: reduced opacity to 50% */}
+                <div className="absolute inset-0 bg-[#ea580c] mix-blend-multiply z-10 opacity-50"></div>
+                <div className="absolute inset-0 bg-gradient-to-bl from-[#c2410c] to-[#9a3412] opacity-40 z-20"></div>
 
-                <Image
-                    src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=1600&auto=format&fit=crop"
-                    alt="Creative"
-                    fill
-                    className="object-cover transition-transform duration-1000 group-hover:scale-110"
-                />
+                <div className="absolute inset-0 w-full h-full overflow-hidden">
+                    <Image
+                        src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?q=80&w=1600&auto=format&fit=crop"
+                        alt="Creative"
+                        fill
+                        className="object-cover transition-transform duration-1000 group-hover:scale-110 opacity-100"
+                    />
+                </div>
 
                 {/* Content */}
                 <div className="relative z-30 h-full flex flex-col justify-center items-center md:items-end p-8 md:pr-20 lg:pr-32 text-center md:text-right animate-fade-in-up" style={{ animationDelay: '0.2s' }}>
-                    <span className="inline-block px-4 py-1.5 rounded-full border border-brand-accent-200/30 bg-brand-accent-900/30 text-brand-accent-100 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
-                        Art & Innovation
+                    <span className="inline-block px-4 py-1.5 rounded-full border border-white/20 bg-white/10 text-orange-50 text-xs font-bold tracking-widest uppercase mb-6 backdrop-blur-md">
+                        Creative Flow
                     </span>
-                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-white mb-6 leading-tight">
+                    <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading font-black text-white mb-6 leading-tight drop-shadow-lg">
                         Thỏa Sức <br />
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-200 to-brand-accent-400">
+                        <span className="text-yellow-200">
                             Sáng Tạo
                         </span>
                     </h1>
-                    <p className="text-orange-50 text-lg md:text-xl font-light mb-10 max-w-md leading-relaxed">
-                        Kho tàng ý tưởng DIY khổng lồ. Từ Lego, Origami đến các dự án thủ công độc đáo.
+                    <p className="text-orange-50 text-lg md:text-xl font-light mb-10 max-w-md leading-relaxed drop-shadow-md">
+                        Kho tàng ý tưởng DIY khổng lồ. Từ Lego, Origami đến thủ công mỹ nghệ.
                     </p>
                     <Link
                         href="#creative-zone"
-                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-brand-navy-900 text-white rounded-2xl font-bold text-lg shadow-glow-amber hover:shadow-xl transition-all hover:-translate-y-1 hover:bg-black"
+                        className="group relative inline-flex items-center gap-3 px-8 py-4 bg-[#c2410c] text-white rounded-2xl font-bold text-lg shadow-lg hover:shadow-orange-500/40 transition-all hover:-translate-y-1 hover:bg-[#9a3412]"
                     >
                         Khám phá DIY
-                        <span className="material-symbols-outlined text-brand-accent transition-transform group-hover:rotate-12">palette</span>
+                        <span className="material-symbols-outlined text-white transition-transform group-hover:rotate-12">palette</span>
                     </Link>
                 </div>
             </div>

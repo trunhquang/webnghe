@@ -52,9 +52,9 @@ const projects: Project[] = [
   },
   {
     id: 5,
-    title: "Kệ sách tự đóng",
+    title: "Lồng đèn tre truyền thống",
     author: "Hung DIY",
-    image: "https://images.unsplash.com/photo-1595428774754-71572277c865?q=80&w=800&auto=format&fit=crop",
+    image: "/images/den-long-tre.jpg",
     likes: 89,
     category: "Wood",
     heightClass: "h-80"
