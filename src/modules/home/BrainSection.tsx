@@ -1,93 +1,106 @@
 import Link from "next/link";
-import Image from "next/image";
 
 export function BrainSection() {
   return (
-    <section className="py-20 bg-slate-900 text-white relative overflow-hidden">
-      {/* Background Effect */}
-      <div className="absolute top-0 right-0 w-1/2 h-full opacity-10 pointer-events-none">
-         <Image 
-            src="https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=1600&auto=format&fit=crop" 
-            alt="Brain Network" 
-            fill 
-            className="object-cover mix-blend-screen"
-         />
+    <section className="py-32 bg-brand-navy-900 relative overflow-hidden text-white">
+      {/* Abstract Glows */}
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden z-0">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-brand-primary-600/20 rounded-full blur-[100px]"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-brand-accent-600/10 rounded-full blur-[100px]"></div>
       </div>
 
-      <div className="container mx-auto px-4 relative z-10">
-        <div className="flex flex-col lg:flex-row items-center gap-12">
-          
-          {/* Cột Trái: Minh họa UI */}
-          <div className="w-full lg:w-1/2">
-            <div className="bg-slate-800 p-2 rounded-xl shadow-2xl border border-slate-700">
-              <div className="bg-slate-900 rounded-lg p-6 relative overflow-hidden min-h-[300px]">
-                {/* Traffic Lights */}
-                <div className="flex gap-4 mb-6 border-b border-slate-800 pb-4">
+      <div className="container mx-auto px-6 relative z-10">
+        <div className="grid lg:grid-cols-2 gap-16 items-center">
+
+          {/* --- LEFT: TEXT CONTENT --- */}
+          <div>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 backdrop-blur-md text-brand-primary-300 font-mono text-xs mb-8">
+              <span className="w-2 h-2 rounded-full bg-brand-primary-500 animate-pulse"></span>
+              FEATURE SPOTLIGHT
+            </div>
+
+            <h2 className="text-5xl lg:text-6xl font-heading font-black mb-6 leading-tight">
+              Your Second <br />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-brand-primary-400 to-cyan-300">
+                Digital Brain
+              </span>
+            </h2>
+
+            <p className="text-lg text-slate-300 mb-8 leading-relaxed">
+              Hệ thống tối ưu để <strong>Lưu trữ (Capture)</strong> kiến thức và <strong>Chuyển hóa (Distill)</strong> thành ý tưởng sáng tạo. Không bao giờ quên một bài học hay một khoảnh khắc "Aha!" nào nữa.
+            </p>
+
+            <ul className="space-y-6 mb-10">
+              {[
+                { title: 'Lưu trữ thông minh', desc: 'Tự động trích xuất nội dung chính từ link bài viết/video.' },
+                { title: 'Liên kết 2 chiều', desc: 'Kết nối các ghi chú (Notes) liên quan để tạo mạng lưới tư duy.' },
+                { title: 'Giao diện tập trung', desc: 'Space làm việc tối giản, loại bỏ xao nhãng.' }
+              ].map((item, i) => (
+                <li key={i} className="flex gap-4">
+                  <div className="w-6 h-6 rounded-full bg-brand-primary-500/20 flex items-center justify-center mt-1 text-brand-primary-400">
+                    <span className="material-symbols-outlined text-sm">check</span>
+                  </div>
+                  <div>
+                    <h4 className="font-bold text-white">{item.title}</h4>
+                    <p className="text-sm text-slate-400">{item.desc}</p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+
+            <div className="flex gap-4">
+              <button className="px-8 py-4 bg-brand-primary-600 hover:bg-brand-primary-500 text-white font-bold rounded-2xl shadow-glow-blue transition-all hover:-translate-y-1">
+                Tạo tài khoản miễn phí
+              </button>
+            </div>
+          </div>
+
+          {/* --- RIGHT: MOCKUP --- */}
+          <div className="relative">
+            {/* Perspective Mockup */}
+            <div className="relative z-10 bg-slate-800 rounded-2xl border border-slate-700 shadow-2xl overflow-hidden transform rotate-[-2deg] hover:rotate-0 transition-transform duration-500">
+              {/* Mockup Toolbar */}
+              <div className="bg-slate-900 border-b border-slate-700 p-4 flex items-center gap-4">
+                <div className="flex gap-2">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                  <div className="w-3 h-3 rounded-full bg-amber-500"></div>
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
                 </div>
-                
-                {/* Skeleton Loading Effect & Content */}
-                <div className="space-y-4">
-                  <div className="flex items-center gap-3 text-slate-400 text-sm">
-                    <span className="material-symbols-outlined text-blue-500">link</span>
-                    <span>Đã lưu từ <strong>xtool.com</strong></span>
-                  </div>
-                  <div className="h-4 bg-slate-800 rounded w-3/4"></div>
-                  <div className="h-4 bg-slate-800 rounded w-full"></div>
-                  <div className="h-4 bg-slate-800 rounded w-5/6"></div>
-                  
-                  <div className="bg-slate-800/50 p-4 rounded-lg border border-slate-700 mt-4">
-                    <div className="flex items-center gap-2 mb-2">
-                      <span className="material-symbols-outlined text-amber-500 text-sm">lightbulb</span>
-                      <span className="text-xs font-bold text-amber-500 uppercase">My Idea</span>
-                    </div>
-                    <p className="text-sm text-slate-300">"Kết hợp kỹ thuật macrame vào khung đèn lồng tre để tạo hiệu ứng ánh sáng mới..."</p>
+                <div className="flex-1 text-center">
+                  <div className="inline-block bg-slate-800 px-4 py-1 rounded text-xs text-slate-400 font-mono">My Brain / Inbox</div>
+                </div>
+              </div>
+
+              {/* Mockup Body */}
+              <div className="p-8 bg-slate-900/50 min-h-[400px] space-y-4">
+                {/* Item 1 */}
+                <div className="bg-slate-800/80 p-4 rounded-xl border-l-4 border-brand-primary mb-4">
+                  <div className="text-xs text-brand-primary mb-1 font-bold">SAVED • JUST NOW</div>
+                  <h4 className="font-bold text-white">How to build a Second Brain?</h4>
+                  <p className="text-xs text-slate-400 mt-2 truncate">Phương pháp ghi chú Zettelkasten giúp bạn liên kết kiến thức...</p>
+                </div>
+
+                {/* Item 2 */}
+                <div className="bg-slate-800/80 p-4 rounded-xl border-l-4 border-amber-500">
+                  <div className="text-xs text-amber-500 mb-1 font-bold">IDEA • 2 MINS AGO</div>
+                  <h4 className="font-bold text-white">Làm đèn lồng từ vỏ hộp sữa?</h4>
+                  <p className="text-xs text-slate-400 mt-2 truncate">Cần chuẩn bị: Vỏ hộp, sơn acrylic, dây đèn LED...</p>
+                  <div className="flex gap-2 mt-3">
+                    <span className="px-2 py-1 bg-slate-700 rounded text-[10px] text-slate-300">#DIY</span>
+                    <span className="px-2 py-1 bg-slate-700 rounded text-[10px] text-slate-300">#Recycle</span>
                   </div>
                 </div>
-                
-                {/* Floating Badge */}
-                <div className="absolute bottom-6 right-6 bg-blue-600 text-white px-4 py-2 rounded-full shadow-lg flex items-center gap-2 text-sm font-bold animate-bounce">
-                  <span className="material-symbols-outlined text-sm">check_circle</span> Đã lưu vào My Brain
+
+                {/* Fake Cursor */}
+                <div className="absolute bottom-10 right-10 pointer-events-none">
+                  <span className="material-symbols-outlined text-white drop-shadow-md text-3xl">near_me</span>
                 </div>
               </div>
             </div>
-          </div>
 
-          {/* Cột Phải: Text Content */}
-          <div className="w-full lg:w-1/2 text-left">
-            <div className="inline-block px-3 py-1 rounded-full bg-blue-900 border border-blue-700 text-blue-300 text-sm font-bold mb-4">
-              Giới thiệu tính năng mới
-            </div>
-            <h2 className="text-4xl md:text-5xl font-heading font-extrabold mb-6">
-              Xây dựng <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-amber-400">Bộ Não Thứ Hai</span>
-            </h2>
-            <p className="text-slate-300 text-lg mb-6 leading-relaxed">
-              Không chỉ là web, đây là kho lưu trữ kiến thức cá nhân của bạn. Áp dụng phương pháp <strong>C.O.D.E</strong> (Capture, Organize, Distill, Express) để quản lý thông tin hiệu quả.
-            </p>
-            <ul className="space-y-4 mb-8">
-              <li className="flex items-start gap-3">
-                <span className="material-symbols-outlined text-green-400 mt-1">save</span>
-                <div>
-                  <strong className="block text-white">Lưu trữ mọi lúc</strong>
-                  <span className="text-slate-400 text-sm">Copy link bài viết, video, ý tưởng và dán vào. Web tự động trích xuất nội dung.</span>
-                </div>
-              </li>
-              <li className="flex items-start gap-3">
-                <span className="material-symbols-outlined text-amber-400 mt-1">hub</span>
-                <div>
-                  <strong className="block text-white">Kết nối ý tưởng</strong>
-                  <span className="text-slate-400 text-sm">Liên kết các ghi chú học tập với dự án sáng tạo của bạn.</span>
-                </div>
-              </li>
-            </ul>
-            <button className="bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-blue-400 text-white px-8 py-4 rounded-xl font-bold shadow-lg shadow-blue-500/30 transform hover:-translate-y-1 transition-all">
-              Tạo tài khoản miễn phí ngay
-            </button>
-            <p className="mt-4 text-xs text-slate-500">*Miễn phí trọn đời cho 500 thành viên đăng ký sớm.</p>
+            {/* Back Card for Depth */}
+            <div className="absolute top-4 left-4 w-full h-full bg-slate-800/30 rounded-2xl -z-10 rotate-[2deg]"></div>
           </div>
-
         </div>
       </div>
     </section>

@@ -2,92 +2,100 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      // Logic: Nếu cuộn quá 50px thì đổi trạng thái
-      setIsScrolled(window.scrollY > 50);
+      setIsScrolled(window.scrollY > 20);
     };
-
     window.addEventListener("scroll", handleScroll);
-    // Dọn dẹp sự kiện khi component bị hủy để tránh lỗi bộ nhớ
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   return (
-    <header
-      id="main-header"
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 border-b ${
-        isScrolled
-          ? "bg-white/95 backdrop-blur-md shadow-md h-16 border-slate-200/50" // Trạng thái khi cuộn
-          : "bg-white/95 backdrop-blur-md shadow-sm h-20 border-slate-200/50" // Trạng thái ban đầu
-      }`}
-    >
-      <div className="container mx-auto px-4 h-full flex items-center justify-between gap-4">
-        {/* --- LOGO --- */}
-        <Link href="/" className="flex items-center gap-2 group">
-          <div className="w-10 h-10 bg-blue-900 rounded-lg flex items-center justify-center text-white font-heading font-bold text-xl group-hover:bg-amber-500 transition-colors duration-300">
-            TT
-          </div>
-          <span className="font-heading font-bold text-xl tracking-tight text-blue-900 hidden sm:block">
-            TrungTri<span className="text-amber-500">.com</span>
-          </span>
-        </Link>
+    <>
+      <header
+        className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${isScrolled
+            ? "h-16 glass"
+            : "h-24 bg-transparent"
+          }`}
+      >
+        <div className="container mx-auto px-6 h-full flex items-center justify-between">
+          {/* LOGO */}
+          <Link href="/" className="flex items-center gap-3 group">
+            <div className="relative w-10 h-10 overflow-hidden rounded-xl bg-gradient-to-br from-brand-navy-900 to-brand-primary-700 shadow-xl group-hover:shadow-brand-primary/50 transition-all duration-300">
+              <span className="absolute inset-0 flex items-center justify-center text-white font-heading font-black text-xl">
+                T
+              </span>
+            </div>
+            <span className={`font-heading font-bold text-xl tracking-tight transition-colors duration-300 ${isScrolled ? 'text-slate-900' : 'text-slate-900 md:text-white'}`}>
+              TrungTri<span className="text-brand-accent">.com</span>
+            </span>
+          </Link>
 
-        {/* --- SEARCH BAR (Desktop) --- */}
-        <div className="hidden md:flex flex-1 max-w-2xl relative mx-4">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <span className="material-symbols-outlined text-slate-400">search</span>
+          {/* SEARCH BAR - CENTER (Desktop) */}
+          <div className={`hidden md:flex flex-1 max-w-xl mx-8 transition-all duration-500 transform ${isScrolled ? 'scale-100 opacity-100' : 'scale-105 opacity-100'}`}>
+            <div className="relative w-full group">
+              <input
+                type="text"
+                placeholder="Tìm kiến thức TOEIC, IELTS hoặc ý tưởng DIY..."
+                className={`w-full pl-12 pr-4 py-3 rounded-full border-2 transition-all duration-300 focus:outline-none focus:ring-4 focus:ring-brand-primary/20 ${isScrolled
+                    ? "bg-slate-100 border-slate-200 focus:border-brand-primary text-slate-800 placeholder-slate-400"
+                    : "bg-white/10 backdrop-blur-md border-white/20 text-white placeholder-blue-100 focus:bg-white/20 focus:border-white/50"
+                  }`}
+              />
+              <span className={`material-symbols-outlined absolute left-4 top-1/2 -translate-y-1/2 transition-colors ${isScrolled ? "text-slate-400 group-focus-within:text-brand-primary" : "text-blue-100 group-focus-within:text-white"
+                }`}>
+                search
+              </span>
+            </div>
           </div>
-          <input
-            type="text"
-            className="block w-full pl-10 pr-4 py-3 border border-slate-200 rounded-full leading-5 bg-slate-50 placeholder-slate-400 focus:outline-none focus:bg-white focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150 ease-in-out shadow-inner"
-            placeholder="Bạn muốn học TOEIC hay tìm ý tưởng Lego hôm nay?"
-          />
-          <button className="absolute inset-y-1 right-1 px-4 bg-blue-900 text-white rounded-full hover:bg-blue-800 transition text-sm font-semibold">
-            Tìm kiếm
-          </button>
-        </div>
 
-        {/* --- MENU PHẢI --- */}
-        <div className="flex items-center gap-4">
-          <nav className="hidden lg:flex items-center gap-6 font-semibold text-slate-600 text-sm">
-            <Link href="#edu-hub" className="hover:text-blue-700 transition relative group">
+          {/* DESKTOP NAV */}
+          <nav className="hidden lg:flex items-center gap-8">
+            <Link
+              href="#edu-hub"
+              className={`text-sm font-semibold transition-colors duration-300 hover:text-brand-primary ${isScrolled ? 'text-slate-600' : 'text-white/90'}`}
+            >
               Góc Học Tập
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
             </Link>
-            <Link href="#creative-zone" className="hover:text-amber-600 transition relative group">
+            <Link
+              href="#creative-zone"
+              className={`text-sm font-semibold transition-colors duration-300 hover:text-brand-accent ${isScrolled ? 'text-slate-600' : 'text-white/90'}`}
+            >
               Góc Sáng Tạo
-              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-amber-500 transition-all group-hover:w-full"></span>
             </Link>
-            <Link href="#" className="hover:text-slate-900 transition">
-              Cộng Đồng
+
+            {/* ACTION BUTTON */}
+            <Link
+              href="/dashboard"
+              className="group relative px-6 py-2.5 rounded-full overflow-hidden bg-white shadow-lg transition-transform active:scale-95 hover:shadow-xl"
+            >
+              <span className="relative z-10 flex items-center gap-2 font-bold text-brand-navy-900 text-sm">
+                <span className="material-symbols-outlined text-[18px]">psychology</span>
+                My Brain
+              </span>
+              <div className="absolute inset-0 bg-gradient-to-r from-brand-accent-light to-brand-accent opacity-0 group-hover:opacity-20 transition-opacity duration-300"></div>
             </Link>
           </nav>
 
-          <button className="flex items-center gap-2 bg-slate-900 hover:bg-slate-700 text-white px-5 py-2.5 rounded-full font-bold shadow-lg shadow-blue-900/20 transform hover:-translate-y-0.5 transition-all duration-200">
-            <span className="material-symbols-outlined text-[20px]">login</span>
-            <span className="hidden sm:inline">My Brain</span>
+          {/* MOBILE BURGER */}
+          <button
+            className="lg:hidden p-2 text-slate-800"
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          >
+            <span className={`material-symbols-outlined text-3xl ${isScrolled ? 'text-slate-800' : 'text-slate-800 md:text-white'}`}>
+              {isMobileMenuOpen ? 'close' : 'menu'}
+            </span>
           </button>
         </div>
-      </div>
+      </header>
 
-      {/* --- MOBILE SEARCH (Chỉ hiện ở mobile) --- */}
-      <div className="md:hidden px-4 pb-3">
-        <div className="relative">
-          <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-            <span className="material-symbols-outlined text-slate-400 text-sm">search</span>
-          </div>
-          <input
-            type="text"
-            className="block w-full pl-9 pr-3 py-2 border border-slate-200 rounded-lg text-sm bg-slate-50 focus:ring-2 focus:ring-blue-500"
-            placeholder="Tìm khóa học, ý tưởng..."
-          />
-        </div>
-      </div>
-    </header>
+      {/* Mobile Menu Overlay could go here */}
+    </>
   );
 }
